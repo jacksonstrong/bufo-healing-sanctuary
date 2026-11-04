@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us · Bufo Healing Sanctuary</title>
+<meta name="description" content="Who we are: a 501(c)(3) spiritual sanctuary in the East Piney Woods of Texas. Our foundation, mission, beliefs, the Eagle and Condor prophecy, and the facilitators who will walk with you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.belief-list{counter-reset:b;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.belief-list div{counter-increment:b;background:var(--bone);border-radius:18px;padding:22px 24px 24px;font-size:18px;line-height:1.55;color:var(--ink-soft)}
+.belief-list div::before{content:counter(b,decimal-leading-zero);display:block;font:600 14px/1 var(--sans);letter-spacing:.12em;color:var(--ember);margin-bottom:10px}
+.belief-list b{color:var(--pine);font-weight:600}
+.amen{margin-top:34px;font-family:var(--serif);font-style:italic;font-size:clamp(26px,2.6vw,36px);color:var(--pine);font-variation-settings:"SOFT" 100}
+.prophecy{position:relative;overflow:hidden}
+.prophecy .bird{position:absolute;right:0;top:40px;width:min(760px,70%);opacity:.6;mix-blend-mode:lighten;pointer-events:none}
+.prophecy .wrap{position:relative;z-index:2}
+.dates{display:flex;flex-wrap:wrap;gap:14px;margin:34px 0}
+.dates div{border:1px solid rgba(212,154,106,.45);border-radius:16px;padding:16px 22px}
+.dates b{display:block;font-family:var(--serif);font-weight:400;font-size:28px;color:var(--clay)}
+.dates span{font-size:16px;color:rgba(245,239,228,.82)}
+.lead-guide{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,5vw,80px);align-items:center;margin-bottom:70px}
+.lead-guide img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;border-radius:999px 999px var(--r) var(--r)}
+.lead-guide .role{font-size:17px;color:var(--ink-soft);margin:8px 0 22px}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.member{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.member img{width:96px;height:96px;border-radius:50%;object-fit:cover}
+.member h3{font-size:25px;margin-top:6px}
+.member .where{font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ember)}
+.member p{font-size:18px;color:var(--ink-soft);line-height:1.55}
+.member a.reach{margin-top:auto;padding-top:8px;font-weight:600;font-size:17px;color:var(--pine)}
+.member.open{background:transparent;border:1.5px dashed rgba(30,58,45,.35)}
+.member.open .ring{width:96px;height:96px;border-radius:50%;border:1.5px dashed var(--ember);display:grid;place-items:center;font-family:var(--serif);font-size:40px;color:var(--ember)}
+.story{background:var(--pine);color:var(--bone);border-radius:28px;padding:clamp(36px,5vw,70px);text-align:center}
+.story blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3vw,40px);line-height:1.3;max-width:none;margin:0 auto;font-variation-settings:"SOFT" 100,"opsz" 144}
+.story blockquote em{color:var(--clay)}
+.story cite{display:block;margin-top:26px;font-style:normal;font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,239,228,.8)}
+@media (max-width:1000px){.team-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.belief-list,.team-grid,.lead-guide{grid-template-columns:1fr}.lead-guide img{max-width:400px}.prophecy .bird{width:100%;right:0;top:10px;opacity:.3}}
+</style>
+
+<!-- share -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bufo Healing Sanctuary">
+<meta property="og:title" content="About Us · Bufo Healing Sanctuary">
+<meta property="og:description" content="Who we are: a 501(c)(3) spiritual sanctuary in the East Piney Woods of Texas. Our foundation, mission, beliefs, the Eagle and Condor prophecy, and the facilitators who will walk with you.">
+<meta property="og:url" content="https://bufo-healing-sanctuary.vercel.app/about">
+<meta property="og:image" content="https://bufo-healing-sanctuary.vercel.app/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bufo Healing Sanctuary: Return to your truth, your love, and your peace.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bufo-healing-sanctuary.vercel.app/og.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- /share -->
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="22.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="24" cy="17" r="5.2" fill="currentColor" opacity=".9"/>
+    <path d="M7 33c5-3 9-3 13 0s9 3 13 0 7-3 8-2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M9 38.5c4.5-2.4 8-2.4 11.5 0s8 2.4 11.5 0 6-2.4 7.5-1.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
+  </symbol>
+  <symbol id="leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l7-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg><use href="#mark"/></svg>
+      <span><b>Bufo Healing&nbsp;Sanctuary</b><small>East Piney Woods · Texas</small></span>
+    </a>
+    <ul>
+      <li><a href="/pathways">Pathways</a></li>
+      <li><a href="/journey">Your&nbsp;Journey</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/training">Training</a></li>
+      <li><a href="/learn">Learn</a></li>
+      <li><a href="/give">Give</a></li>
+      <li><a href="/connect">Contact</a></li>
+    </ul>
+    <a class="btn" href="https://calendly.com/bufohealingsanctuary/discovery-call-">Book a Discovery&nbsp;Call</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mm">Menu</button>
+  </div>
+  <div class="mobile-menu" id="mm">
+    <a href="/pathways">Pathways</a><a href="/journey">Your&nbsp;Journey</a><a href="/about">About</a><a href="/training">Training</a><a href="/learn">Learn</a><a href="/give">Give</a><a href="/connect">Contact</a>
+    <a href="https://calendly.com/bufohealingsanctuary/discovery-call-">Book a Discovery&nbsp;Call</a>
+  </div>
+</nav>
+
+<main>
+
+
+<header class="page-hero has-img" style="--img:url(/img/about-lake.jpg)">
+  <div class="wrap">
+    <div class="eyebrow rise d1">About the&nbsp;sanctuary</div>
+    <h1 class="rise d2">A sacred community rooted in <em>love and&nbsp;reverence.</em></h1>
+    <p class="rise d3">Bufo Healing Sanctuary is a 501(c)(3) spiritual sanctuary in the East Piney Woods of Texas. We gather for sincere spiritual practice, sacred ceremony, and lasting personal&nbsp;transformation.</p>
+    <div class="ctas rise d4">
+      <a class="btn btn-ember" href="https://calendly.com/bufohealingsanctuary/discovery-call-">Book a Discovery Call <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#facilitators">Meet the&nbsp;team</a>
+    </div>
+  </div>
+</header>
+
+<nav class="subnav" aria-label="On this page">
+  <div class="wrap">
+    <a href="#foundation">Our&nbsp;Foundation</a>
+    <a href="#mission">Mission</a>
+    <a href="#beliefs">Statement of&nbsp;Beliefs</a>
+    <a href="#prophecy">The Eagle &amp; Condor&nbsp;Prophecy</a>
+    <a href="#facilitators">Our&nbsp;Facilitators</a>
+    <a href="#stories">Guest&nbsp;Stories</a>
+  </div>
+</nav>
+
+<!-- FOUNDATION -->
+<section id="foundation">
+  <div class="wrap">
+    <div class="split">
+      <div class="rv">
+        <div class="eyebrow">Our&nbsp;foundation</div>
+        <h2 style="margin-top:18px">Sacred medicine is <em>a&nbsp;relationship.</em></h2>
+        <p class="lede" style="margin-top:22px">It is built through preparation, integrity, embodiment, responsibility, and integration. The ceremony is one part of the journey. How you carry what is revealed into your life is just as&nbsp;sacred.</p>
+      </div>
+      <div class="prose rv">
+        <p>Our foundation lives where ancient wisdom, ceremonial stewardship, nervous system awareness, and spiritual growth meet. Every guest is welcomed into a process that values safety, education, discernment, ethical stewardship, personal responsibility, and ongoing integration&nbsp;support.</p>
+        <p>We see sacred medicines as sacred catalysts. When approached consciously and with respect, they may support deeper self-awareness, healing, remembrance, spiritual awakening, and transformation. They are never a shortcut or a quick&nbsp;fix.</p>
+        <h3>Our spiritual&nbsp;path</h3>
+        <p>Our path is rooted in a direct, personal relationship with God, Great Spirit, the Divine, and Sacred Mother Earth. We honor the sovereignty of each person. Your relationship with the Divine is your own, and it does not require any traditional or man-made religious&nbsp;doctrine.</p>
+        <p>We approach ceremony as a spiritual practice, with reverence, intention, prayer, preparation, and respect for the&nbsp;sacrament.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREEDOM -->
+<section class="bg-sand">
+  <div class="wrap">
+    <div class="split">
+      <div class="rv">
+        <div class="eyebrow">Spiritual freedom &amp; sacred&nbsp;practice</div>
+        <h2 style="margin-top:18px">Protected by our <em>freedom of&nbsp;faith.</em></h2>
+      </div>
+      <div class="prose rv">
+        <p>Our sincere spiritual beliefs, ceremonies, and sacramental practices exist within the legal framework of religious freedom in the United&nbsp;States.</p>
+        <p>The First Amendment protects the free exercise of faith. The Religious Freedom Restoration Act (RFRA) protects sincere religious exercise from substantial government burden, under the standards set by that&nbsp;law.</p>
+        <p>The law uses the words "religion" and "religious exercise." We describe our own path as deeply spiritual. We honor these protections while staying rooted in a direct relationship with the Divine, sacred ceremony, spiritual sovereignty, and sincerely held&nbsp;beliefs.</p>
+        <p>Our ceremonies are offered with reverence, integrity, responsibility, careful stewardship, and respect for applicable&nbsp;law.</p>
+      </div>
+    </div>
+    <div class="tiles four rv" style="margin-top:56px">
+      <div class="tile"><div class="kind">We&nbsp;value</div><h3>Ceremonial&nbsp;integrity</h3><p>Every ceremony is held as a sacred practice, with care and&nbsp;intention.</p></div>
+      <div class="tile"><div class="kind">We&nbsp;value</div><h3>Thoughtful&nbsp;preparation</h3><p>Nervous system support and education before you ever&nbsp;arrive.</p></div>
+      <div class="tile"><div class="kind">We&nbsp;value</div><h3>Integration</h3><p>Ongoing practices that help you live what was&nbsp;revealed.</p></div>
+      <div class="tile"><div class="kind">We&nbsp;value</div><h3>Growing in&nbsp;wisdom</h3><p>Evolving safety awareness, ethical stewardship, and shared learning as this field&nbsp;grows.</p></div>
+    </div>
+    <p class="amen rv" style="text-align:center;max-width:none;margin-inline:auto;margin-top:56px">Above all, we are called to remember, integrate, embody, and live what has been&nbsp;revealed.</p>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission" class="bg-pine">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Our&nbsp;mission</div>
+      <h2>Grounded, transformative pathways, <em>held with&nbsp;care.</em></h2>
+      <p class="lede">Our mission is to offer intentional, grounded, and transformative sacred medicine pathways rooted in preparation, integration, education, stewardship, and personal&nbsp;responsibility.</p>
+    </div>
+    <div class="tiles rv">
+      <div class="tile"><div class="kind">Supportive&nbsp;spaces</div><h3>Ceremony &amp;&nbsp;education</h3><p>Spaces that honor ancient wisdom, nervous system awareness, spiritual growth, embodiment, and conscious integration. Guided by integrity, safety, reciprocity, and&nbsp;compassion.</p></div>
+      <div class="tile"><div class="kind">Our&nbsp;offerings</div><h3>Many ways&nbsp;in</h3><p>Pathways, retreats, integration support, public education, and facilitator training, all helping people grow in self-awareness, healing, and conscious relationship with the&nbsp;world.</p></div>
+      <div class="tile"><div class="kind">Our&nbsp;devotion</div><h3>Always&nbsp;growing</h3><p>As the sanctuary evolves, we stay devoted to ethical stewardship, community support, and grounded spaces for healing, remembrance, and&nbsp;responsibility.</p></div>
+    </div>
+    <p class="note rv" style="margin-top:40px">We believe true transformation grows through the ongoing embodiment and integration of what the journey reveals, long after the ceremony&nbsp;ends.</p>
+  </div>
+</section>
+
+<!-- BELIEFS -->
+<section id="beliefs" class="bg-sand">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Statement of&nbsp;beliefs</div>
+      <h2>What we <em>hold&nbsp;sacred.</em></h2>
+      <p class="lede"><b style="color:var(--pine)">We&nbsp;intend</b> to support the transformation and evolution of people seeking enlightenment in communion with the Divine Creator, through the ceremonial and sacred use of natural entheogens. To fulfill this purpose, we organize retreats and sacred ceremonies for the expansion of consciousness, along with other guided relaxation practices and practices of ancestral&nbsp;consciousness.</p>
+    </div>
+    <div class="belief-list rv">
+      <div><b>We&nbsp;believe</b> natural entheogens were manifested by the Divine Creator so that all people, regardless of religion, race, sex, or gender, may commune with the&nbsp;Divine.</div>
+      <div><b>We&nbsp;believe</b> the ceremonial and sacred use of natural entheogens helps our members access their divinity from&nbsp;within.</div>
+      <div><b>We&nbsp;believe</b>, from our experience, that sacramental use within an appropriate spiritual context benefits the expansion of consciousness and supports each person's spiritual&nbsp;quest.</div>
+      <div><b>We&nbsp;believe</b> our love and connection to all things deepens through sacrament. It often brings mystical experiences of higher spiritual realms, where we meet the Divine Creator and other spiritual&nbsp;beings.</div>
+      <div><b>We&nbsp;believe</b> mystical experiences bring answers and guidance to life's deepest questions, and unite us through love, understanding, and connection with all&nbsp;beings.</div>
+      <div><b>We&nbsp;believe</b> the overarching message we receive is that unconditional love is one of the most powerful forces in the universe, and the very nature of the Divine&nbsp;Creator.</div>
+      <div><b>We&nbsp;believe</b> sacrament restores a more symbiotic relationship with Mother Nature, and so we are called to respect and preserve her, and to encourage others to do the&nbsp;same.</div>
+      <div><b>We&nbsp;believe</b> sacramental use of entheogens is a very ancient practice, perhaps over 100,000 years old. Ayahuasca and San Pedro ceremonies date back more than 2,000 years. We seek to honor the ancestors in how we&nbsp;practice.</div>
+      <div><b>We&nbsp;believe</b> that at death our spirits return to the same realm we touch through&nbsp;sacrament.</div>
+      <div><b>We&nbsp;believe</b> becoming at home in the spiritual realm helps us overcome the fear of death, so we can focus on loving others and making the universe better for all living&nbsp;beings.</div>
+      <div><b>We&nbsp;believe</b> our members carry a moral and ethical duty to meet every situation with peace, love, and&nbsp;understanding.</div>
+      <div><b>We&nbsp;believe</b> other sacred texts and teachings, where they are consistent with the Divine Creator, offer guidance in how to live, love, and be tolerant of all&nbsp;beings.</div>
+    </div>
+    <p class="amen rv">And so it&nbsp;is.</p>
+  </div>
+</section>
+
+<!-- PROPHECY -->
+<section id="prophecy" class="bg-deep prophecy">
+  <img class="bird" src="/img/about-prophecy.jpg" alt="" aria-hidden="true">
+  <div class="wrap">
+    <div class="sec-head rv" style="max-width:720px">
+      <div class="eyebrow">An indigenous prophecy of the&nbsp;Americas</div>
+      <h2>The Eagle &amp; <em>the&nbsp;Condor.</em></h2>
+      <p class="lede">When the Eagle of the North and the Condor of the South fly together in the same sky, the spirit of the land will&nbsp;reawaken.</p>
+    </div>
+    <div class="dates rv">
+      <div><b>August 13,&nbsp;1521</b><span>The Spanish conquest of the Aztec&nbsp;civilization</span></div>
+      <div><b>500&nbsp;years</b><span>A time of healing, recovery, and&nbsp;reconnection</span></div>
+      <div><b>August 13,&nbsp;2021</b><span>The prophecy's 500-year span&nbsp;completes</span></div>
+    </div>
+    <div class="split rv">
+      <div class="prose">
+        <h3 style="margin-top:0">The medicines of North and&nbsp;South</h3>
+        <p>In this telling, Grandfather Peyote, a cactus of the North American deserts, is the Eagle of the North. Grandmother Ayahuasca, a sacred brew of the Amazon, is the Condor of the South. The shared sky is understood as the Sonoran&nbsp;Desert.</p>
+        <p>The Sonoran Desert is home to the Bufo Alvarius toad. It lives deep in the earth for nine months of the year and rises to the surface for only three. August is the peak month for gathering its medicine. In this way, the toad and its medicine are seen as the reawakening of the spirit of the&nbsp;land.</p>
+      </div>
+      <div class="prose">
+        <h3 style="margin-top:0">A secret kept for 500&nbsp;years</h3>
+        <p>One line of thought holds that the Aztecs foresaw the end of their civilization. In response, they hid many of their artifacts and oral teachings, including their knowledge of the sacred Bufo Alvarius medicine. There is a historical link between the toad and the Aztecs. Its spiritual role has only been widely recognized in recent&nbsp;times.</p>
+        <p>We understand this hiding as protection, for the medicine itself and for humanity, until it could be rediscovered now. The Aztecs held deep knowledge of many things, including astrology and their careful&nbsp;calendars.</p>
+      </div>
+    </div>
+    <p class="note rv" style="margin-top:40px">Interpretations of this prophecy differ among indigenous communities and individuals, and hidden histories are hard to prove. We hold it with respect and humility. We ask everyone who carries this medicine to keep learning, together, from diverse cultures about the true history of Bufo&nbsp;Alvarius.</p>
+  </div>
+</section>
+
+<!-- FACILITATORS -->
+<section id="facilitators">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Our facilitators &amp; integration&nbsp;coaches</div>
+      <h2>The people who will <em>walk with&nbsp;you.</em></h2>
+    </div>
+
+    <div class="lead-guide rv">
+      <img src="/img/marla.jpg" alt="Marla B. Lindner in her garden">
+      <div>
+        <div class="eyebrow">Founder · Owner &amp; CEO · Huntsville,&nbsp;Texas</div>
+        <h2 style="margin-top:14px;font-size:clamp(34px,4vw,54px)">Marla B. <em>Lindner</em></h2>
+        <p class="role">Bufo Alvarius, Huachuma, and Iboga/Ibogaine TA facilitator and trainer. Spiritual guide. Transformational psychedelic soul integration&nbsp;coach.</p>
+        <div class="prose">
+          <p>Marla founded Bufo Healing Sanctuary and serves as its lead facilitator. She offers private sacred ceremonies, immersive retreats, educational programs, and facilitator training with Bufo Alvarius (5-MeO-DMT), Huachuma (San Pedro), and Iboga Total&nbsp;Alkaloid.</p>
+          <p>Her work grew from her own profound journey of transformation, self-discovery, and spiritual awakening. With extensive training in sacred medicine facilitation, psychedelic integration, energy medicine, mentorship, and spiritual leadership, she bridges ancient wisdom with neuroscience, neuroplasticity, and nervous system&nbsp;awareness.</p>
+          <p>As an educator, she builds the sanctuary's programs, workshops, and facilitator curricula, all centered on conscious preparation, ethical facilitation, safety, somatic awareness, and integration. She weaves in meditation, breathwork, sound, energy practices, and spiritual&nbsp;teachings.</p>
+          <p>At the heart of it all is her devotion to personal sovereignty and compassion. Marla believes true healing begins within. She sees her role as a guide who empowers you toward self-awareness, personal responsibility, and your own inner&nbsp;wisdom.</p>
+        </div>
+        <p style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-ember" href="https://calendly.com/bufohealingsanctuary/discovery-call-">Book a call with Marla <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="/connect">Send Marla a&nbsp;message</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="member rv">
+        <img src="/img/jon.jpg" alt="Jon Stevens">
+        <div class="where">Ann Arbor,&nbsp;Michigan</div>
+        <h3>Jon&nbsp;Stevens</h3>
+        <p><b>Veteran. Bufo Alvarius ceremonialist, Ibogaine facilitator, and transformational integration&nbsp;coach.</b></p>
+        <p>Jon served in Marine Special Operations and as a 911 paramedic. His own journey through trauma and PTSD led him to sacred medicine. He now creates safe, compassionate spaces for people to release trauma and reconnect with their true selves, and guides them through integration before and after&nbsp;ceremony.</p>
+        <a class="reach" href="mailto:jon.stevens8231@gmail.com">Reach out to Jon&nbsp;→</a>
+      </div>
+      <div class="member rv">
+        <img src="/img/logan.jpg" alt="Logan Lund">
+        <div class="where">Salt Lake City,&nbsp;Utah</div>
+        <h3>Logan&nbsp;Lund</h3>
+        <p><b>Bufo Alvarius facilitator and transformational psychedelic integration&nbsp;coach.</b></p>
+        <p>After years of outward success in sales, Logan felt anxious and far from his purpose. Bufo Alvarius brought him back to himself, dissolving layers of fear and revealing a clarity and peace that had always been there. He now serves as an independent facilitator within the sanctuary, holding space with reverence, integrity, and grounded&nbsp;presence.</p>
+        <a class="reach" href="https://www.utah5meo.com/">Reach out to Logan&nbsp;→</a>
+      </div>
+      <div class="member rv">
+        <img src="/img/jason.jpg" alt="Jason Daum">
+        <div class="where">Ohio</div>
+        <h3>Jason&nbsp;Daum</h3>
+        <p><b>Veteran, father, Bufo Alvarius facilitator, and psychedelic integration&nbsp;coach.</b></p>
+        <p>Jason is a graduate of our Bufo Alvarius Facilitator Training Program and practices as an independent facilitator within the sanctuary. His training covers ceremonial facilitation, preparation and integration, trauma-informed awareness, nervous system education, and ethical space holding. Full biography coming&nbsp;soon.</p>
+        <a class="reach" href="mailto:coachjd81@hotmail.com">Reach out to Jason&nbsp;→</a>
+      </div>
+      <div class="member rv">
+        <img src="/img/cynthia.jpg" alt="Cynthia Stubbins">
+        <div class="where">Texas</div>
+        <h3>Cynthia&nbsp;Stubbins</h3>
+        <p><b>Founder of Premium CPR. CPR, First Aid, AED, and BLS&nbsp;instructor.</b></p>
+        <p>Cynthia leads the hands-on CPR, First Aid, AED, and Basic Life Support training in our facilitator program. She has also experienced sacred medicine herself, including Bufo Alvarius, so she knows firsthand why careful preparation and safety&nbsp;matter.</p>
+        <a class="reach" href="https://premiumcpr.com/about-us/">Reach out to Cynthia&nbsp;→</a>
+      </div>
+      <div class="member open rv">
+        <div class="ring">?</div>
+        <div class="where">In&nbsp;training</div>
+        <h3>Can you hear the&nbsp;call?</h3>
+        <p>This seat belongs to a practitioner now finishing advanced training in Bufo Alvarius facilitation and integration coaching. They are being mentored in ethical space holding, trauma-informed care, ceremony support, safety, and post-ceremony integration. We look forward to introducing them&nbsp;soon.</p>
+        <a class="reach" href="/training">Feel called to join our team? Start here&nbsp;→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section id="stories" class="bg-sand">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Guest&nbsp;stories</div>
+      <h2>Real stories from those who <em>answered the&nbsp;call.</em></h2>
+    </div>
+    <div class="story rv">
+      <blockquote>“Marla’s presence and facilitation style is one of <em>unconditional love, deep devotion, and total&nbsp;safety.</em> I felt 100% safe and properly prepared going into the ceremony, and the integration support afterward was detailed, informed, precise, and deeply&nbsp;caring.”</blockquote>
+      <cite>Jackson M. Strong · AUREA Leadership&nbsp;Coach</cite>
+    </div>
+    <div class="cta-band rv" style="margin-top:22px;background:var(--bone);color:var(--ink);border:1px solid var(--line)">
+      <div>
+        <h2 style="color:var(--pine)">Has this work touched <em style="color:var(--ember)">your&nbsp;life?</em></h2>
+        <p style="color:var(--ink-soft)">We value your voice and hold it sacred. Your story may help someone else find the courage to&nbsp;begin.</p>
+      </div>
+      <div class="ctas"><a class="btn btn-ember" href="https://form.jotform.com/252644017852053">Share your story <span class="arr">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:clamp(60px,7vw,90px)">
+  <div class="wrap">
+    <div class="cta-band rv">
+      <div>
+        <h2>Ready to begin? <em>Start with a&nbsp;conversation.</em></h2>
+        <p>Book a Discovery Call with Marla. Share what is calling you and ask&nbsp;anything.</p>
+      </div>
+      <div class="ctas">
+        <a class="btn btn-ember" href="https://calendly.com/bufohealingsanctuary/discovery-call-">Book a Discovery Call <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="/journey">See the four&nbsp;steps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <a class="brand" href="/"><svg><use href="#mark"/></svg><span><b>Bufo Healing&nbsp;Sanctuary</b><small>East Piney Woods · Texas</small></span></a>
+        <p>Letters from the sanctuary: teachings, gatherings, and new retreat&nbsp;dates.</p>
+        <form class="signup" onsubmit="event.preventDefault()"><input type="email" placeholder="Your email" aria-label="Email"><button>Join</button></form>
+      </div>
+      <div><h4>Pathways</h4><ul>
+        <li><a href="/pathways#bufo">Bufo&nbsp;Alvarius</a></li>
+        <li><a href="/pathways#huachuma">Huachuma</a></li>
+        <li><a href="/pathways#iboga">Iboga&nbsp;TA</a></li>
+        <li><a href="/pathways#three-medicine">Three-Medicine&nbsp;Journey</a></li>
+        <li><a href="/pathways#circles">Retreats for every&nbsp;circle</a></li>
+      </ul></div>
+      <div><h4>Sanctuary</h4><ul>
+        <li><a href="/about">Our Spiritual&nbsp;Foundation</a></li>
+        <li><a href="/about#facilitators">Our&nbsp;Facilitators</a></li>
+        <li><a href="/journey">Your&nbsp;Journey</a></li>
+        <li><a href="/training">Facilitator&nbsp;Training</a></li>
+        <li><a href="/learn">Learn &amp;&nbsp;Journal</a></li>
+      </ul></div>
+      <div><h4>Connect</h4><ul>
+        <li><a href="https://calendly.com/bufohealingsanctuary/discovery-call-">Book a Discovery&nbsp;Call</a></li>
+        <li><a href="mailto:bufohealingsanctuary@gmail.com">bufohealingsanctuary@gmail.com</a></li>
+        <li><a href="https://www.youtube.com/@BufoHealingSanctuary">YouTube</a></li>
+        <li><a href="https://www.instagram.com/bufohealingsancturary/">Instagram</a></li>
+        <li><a href="/give">Give</a></li>
+        <li><a href="/connect">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="legal">
+      Bufo Healing Sanctuary is a 501(c)(3) spiritual sanctuary devoted to sincere spiritual practice and sacred ceremony. We honor a direct, personal relationship with God, Great Spirit, the Divine, and Sacred Mother Earth. Our sacramental practices rest on sincerely held beliefs, protected by the First Amendment and the Religious Freedom Restoration Act, and are offered with reverence, responsibility, and respect for applicable law. Nothing on this site is medical advice. © 2026 Bufo Healing&nbsp;Sanctuary.
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js"></script>
+</body>
+</html>
