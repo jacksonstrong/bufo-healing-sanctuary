@@ -171,6 +171,8 @@ section{padding:clamp(84px, 11vw, 150px) 0}
 .person img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;filter:saturate(.9)}
 .person b{display:block;margin-top:18px;font-family:var(--serif);font-weight:500;font-size:22px}
 .person span{font-size:17px;color:var(--ink-soft);line-height:1.45;display:block;margin-top:4px}
+.person .jason-portrait{position:relative;width:100%;aspect-ratio:1;overflow:hidden;border-radius:50%;margin-top:0}
+.person .jason-portrait img{position:absolute;width:349.09%;max-width:none;height:196.36%;aspect-ratio:auto;left:-112.18%;top:-44.55%;border-radius:0}
 
 /* training */
 .training{padding:0 0 clamp(70px,8vw,110px)}
