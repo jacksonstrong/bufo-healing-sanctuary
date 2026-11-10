@@ -413,3 +413,7 @@ h1,h2,h3,h4,summary,blockquote,b,strong,.kind,.eyebrow,cite,.tile h3,.card h3{te
 }
 .trust .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:12px 28px}
 @media (max-width:760px){.trust .wrap{display:flex}}
+
+/* Display the front half of the supplied workbook cover wrap. */
+.workbook-cover{position:relative;width:min(280px,100%);aspect-ratio:928/1332;overflow:hidden;border-radius:10px}
+.book .workbook-cover img,.shop .tile .workbook-cover img{position:absolute;top:0;right:0;width:203.45%;max-width:none;height:100%;object-fit:fill;transform:none;border-radius:0;box-shadow:none}
