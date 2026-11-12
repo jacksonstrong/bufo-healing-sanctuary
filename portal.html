@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facilitator Portal · Bufo Healing Sanctuary</title>
+<meta name="description" content="Your facilitator guest tracker and annual sanctuary membership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/portal.css">
+<meta name="referrer" content="no-referrer">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l7-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><img class="brand-logo" src="/img/logo.png" width="1536" height="1024" alt="Bufo Healing Sanctuary logo"></a>
+    <ul>
+      <li><a href="/pathways">Pathways</a></li>
+      <li><a href="/journey">Your Journey</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/training">Training</a></li>
+      <li><a href="/learn">Learn</a></li>
+      <li><a href="/give">Give</a></li>
+      <li><a href="/connect">Contact</a></li>
+    </ul>
+    <a class="btn" href="https://calendly.com/bufohealingsanctuary/discovery-call-">Book a Discovery Call</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mm">Menu</button>
+  </div>
+  <div class="mobile-menu" id="mm">
+    <a href="/pathways">Pathways</a><a href="/journey">Your Journey</a><a href="/about">About</a><a href="/training">Training</a><a href="/learn">Learn</a><a href="/give">Give</a><a href="/connect">Contact</a>
+    <a href="https://calendly.com/bufohealingsanctuary/discovery-call-">Book a Discovery Call</a>
+  </div>
+</nav>
+
+<main>
+
+
+<header class="page-hero"><div class="wrap">
+ <div class="eyebrow">Your facilitator&nbsp;space</div>
+ <h1>Facilitator <em>Portal</em></h1>
+ <p>A place to return to your guest records and care for your sanctuary&nbsp;membership.</p>
+</div></header>
+<div class="portal"><div class="wrap">
+<p id="status" role="status" aria-live="polite"></p>
+<section id="login" aria-labelledby="login-title">
+ <h2 id="login-title">Welcome&nbsp;back</h2>
+ <p>Sign in with your approved facilitator email and&nbsp;password.</p>
+ <div class="panel">
+ <form id="sign-in"><fieldset style="border:0"><label for="email">Your email</label><input id="email" type="email" autocomplete="username" required maxlength="254"><label for="password">Your password</label><input id="password" type="password" autocomplete="current-password" required><div class="actions"><button class="btn btn-ember" type="submit">Sign in</button><button id="recover" class="btn btn-ghost" type="button">Forgot password</button></div></fieldset></form>
+ <p class="note">Need access? <a href="mailto:bufohealingsanctuary@gmail.com">Contact&nbsp;Marla.</a></p>
+ </div>
+</section>
+<section id="workspace" hidden aria-label="Your private guest records">
+ <div class="account"><div><div class="eyebrow">Your facilitator&nbsp;account</div><h2 id="account-name"></h2></div><button id="logout" class="btn btn-ghost" type="button">Sign out</button></div>
+ <div class="panel"><h3>Your&nbsp;guests</h3>
+ <label for="search">Find a guest by name</label><input type="search" id="search" autocomplete="off">
+ <p id="guest-count" role="status"></p><ul id="guest-list" class="guest-list"></ul>
+ <form id="guest-form"><label for="guest-name">Add a new guest</label><input id="guest-name" maxlength="200" required autocomplete="off"><div class="actions"><button type="submit" class="btn btn-ember">Add guest</button></div></form></div>
+ <div id="guest-record" hidden><h2 id="guest-title" tabindex="-1"></h2>
+ <form id="entry-form" class="panel"><h3>New ceremony&nbsp;entry</h3>
+ <div class="fields">
+ <div><label for="date">Date</label><input id="date" name="date" type="date" required></div>
+ <div><label for="preparation">Preparation time (minutes)</label><input id="preparation" name="preparation" type="number" min="0" max="100000" step="1"></div>
+ <div><label for="start">Ceremony start time</label><input id="start" name="start" type="time"></div>
+ <div><label for="end">Ceremony end time</label><input id="end" name="end" type="time"></div>
+ </div>
+ <label for="intention">Guest intention / how the guest felt before</label><textarea id="intention" name="intention" maxlength="5000"></textarea>
+ <h3 style="margin-top:24px">Medicine&nbsp;record</h3><p>Record actual amounts after the experience. Mark anything&nbsp;unknown.</p>
+ <div class="medicine"><div><label for="medicine0">Medicine / preparation</label><input id="medicine0" name="medicine0" type="text" maxlength="200" autocomplete="off"></div><div><label for="amount0">Amount</label><input id="amount0" name="amount0" type="text" maxlength="200" autocomplete="off"></div><div><label for="time0">Time</label><input id="time0" name="time0" type="time" maxlength="200" autocomplete="off"></div></div><div class="medicine"><div><label for="medicine1">Medicine / preparation</label><input id="medicine1" name="medicine1" type="text" maxlength="200" autocomplete="off"></div><div><label for="amount1">Amount</label><input id="amount1" name="amount1" type="text" maxlength="200" autocomplete="off"></div><div><label for="time1">Time</label><input id="time1" name="time1" type="time" maxlength="200" autocomplete="off"></div></div><div class="medicine"><div><label for="medicine2">Medicine / preparation</label><input id="medicine2" name="medicine2" type="text" maxlength="200" autocomplete="off"></div><div><label for="amount2">Amount</label><input id="amount2" name="amount2" type="text" maxlength="200" autocomplete="off"></div><div><label for="time2">Time</label><input id="time2" name="time2" type="time" maxlength="200" autocomplete="off"></div></div>
+ <label for="feelings">How the guest felt, in their own words</label><textarea id="feelings" name="feelings" maxlength="10000"></textarea>
+ <label for="integration">Later reflections / integration / changes noticed</label><textarea id="integration" name="integration" maxlength="10000"></textarea>
+ <p class="note">For reflection and recordkeeping. Not medical advice, diagnosis, treatment, or dosing&nbsp;guidance.</p>
+ <div class="actions"><button class="btn btn-ember" type="submit">Save entry</button></div>
+ </form>
+ <h3>Previous&nbsp;entries</h3><p id="history-note"></p><div id="history"></div>
+ </div>
+</section>
+<section aria-labelledby="dues-title"><div class="panel">
+ <div class="eyebrow">Sanctuary&nbsp;membership</div><h2 id="dues-title">Annual donation&nbsp;dues</h2>
+ <p>Your facilitator membership donation is $150, valid for 12 months. Include “Facilitator Membership” and your name in the payment&nbsp;note.</p>
+ <div class="actions"><a class="btn btn-ember" href="https://www.venmo.com/u/bufohealingsanctuary" target="_blank" rel="noopener noreferrer">Pay with Venmo</a><a class="btn btn-ghost" href="https://cash.app/$bufohealingsanctuary" target="_blank" rel="noopener noreferrer">Pay with Cash App</a></div>
+ <p class="note">Marla confirms your payment separately. These links do not set up automatic&nbsp;renewal.</p>
+</div></section>
+<noscript><p>Please enable JavaScript to use the&nbsp;tracker.</p></noscript>
+</div></div>
+
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <a class="brand" href="/"><img class="brand-logo" src="/img/logo.png" width="1536" height="1024" alt="Bufo Healing Sanctuary logo"></a>
+        <p>Letters from the sanctuary: teachings, gatherings, and new retreat dates.</p>
+        <form class="signup" onsubmit="event.preventDefault()"><input type="email" placeholder="Your email" aria-label="Email"><button>Join</button></form>
+      </div>
+      <div><h4>Pathways</h4><ul>
+        <li><a href="/pathways#bufo">Bufo Alvarius</a></li>
+        <li><a href="/pathways#huachuma">Huachuma</a></li>
+        <li><a href="/pathways#iboga">Iboga TA</a></li>
+        <li><a href="/pathways#three-medicine">Three-Medicine Journey</a></li>
+        <li><a href="/pathways#circles">Retreats for every circle</a></li>
+      </ul></div>
+      <div><h4>Sanctuary</h4><ul>
+        <li><a href="/about">Our Spiritual Foundation</a></li>
+        <li><a href="/about#facilitators">Our Facilitators</a></li>
+        <li><a href="/journey">Your Journey</a></li>
+        <li><a href="/training">Facilitator Training</a></li>
+        <li><a href="/portal">Facilitator&nbsp;Portal</a></li>
+        <li><a href="/learn">Learn &amp; Journal</a></li>
+      </ul></div>
+      <div><h4>Connect</h4><ul>
+        <li><a href="https://calendly.com/bufohealingsanctuary/discovery-call-">Book a Discovery Call</a></li>
+        <li><a href="mailto:bufohealingsanctuary@gmail.com">bufohealingsanctuary@gmail.com</a></li>
+        <li><a href="https://www.youtube.com/@BufoHealingSanctuary">YouTube</a></li>
+        <li><a href="https://www.instagram.com/bufohealingsancturary/">Instagram</a></li>
+        <li><a href="/give">Give</a></li>
+        <li><a href="/connect">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="legal">
+      Bufo Healing Sanctuary is a 501(c)(3) spiritual sanctuary devoted to sincere spiritual practice and sacred ceremony. We honor a direct, personal relationship with God, Great Spirit, the Divine, and Sacred Mother Earth. Our sacramental practices rest on sincerely held beliefs, protected by the First Amendment and the Religious Freedom Restoration Act, and are offered with reverence, responsibility, and respect for applicable law. Nothing on this site is medical advice. © 2026 Bufo Healing Sanctuary.
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js"></script>
+<script src="/portal-config.js"></script>
+<script src="/portal.js"></script>
+</body>
+</html>

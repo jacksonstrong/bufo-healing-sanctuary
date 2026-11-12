@@ -1,3 +1,6 @@
-_template.html
+tracker-working/
+output/
+*.sql
+PORTAL-SETUP.md
 AGENTS.md
-README.md
+form-check.md
