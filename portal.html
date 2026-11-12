@@ -65,7 +65,7 @@
  <p id="guest-count" role="status"></p><ul id="guest-list" class="guest-list"></ul>
  <form id="guest-form"><label for="guest-name">Add a new guest</label><input id="guest-name" maxlength="200" required autocomplete="off"><div class="actions"><button type="submit" class="btn btn-ember">Add guest</button></div></form></div>
  <div id="guest-record" hidden><h2 id="guest-title" tabindex="-1"></h2>
- <form id="entry-form" class="panel"><h3>New ceremony&nbsp;entry</h3>
+ <form id="entry-form" class="panel"><h3 id="entry-heading">New ceremony&nbsp;entry</h3>
  <div class="fields">
  <div><label for="date">Date</label><input id="date" name="date" type="date" required></div>
  <div><label for="preparation">Preparation time (minutes)</label><input id="preparation" name="preparation" type="number" min="0" max="100000" step="1"></div>
@@ -78,7 +78,7 @@
  <label for="feelings">How the guest felt, in their own words</label><textarea id="feelings" name="feelings" maxlength="10000"></textarea>
  <label for="integration">Later reflections / integration / changes noticed</label><textarea id="integration" name="integration" maxlength="10000"></textarea>
  <p class="note">For reflection and recordkeeping. Not medical advice, diagnosis, treatment, or dosing&nbsp;guidance.</p>
- <div class="actions"><button class="btn btn-ember" type="submit">Save entry</button></div>
+ <div class="actions"><button id="save-entry" class="btn btn-ember" type="submit">Save entry</button><button id="cancel-edit" class="btn btn-ghost" type="button" hidden>Cancel edit</button></div>
  </form>
  <h3>Previous&nbsp;entries</h3><p id="history-note"></p><div id="history"></div>
  </div>
@@ -135,6 +135,6 @@
 
 <script src="/site.js"></script>
 <script src="/portal-config.js"></script>
-<script src="/portal.js"></script>
+<script src="/portal.js?v=2"></script>
 </body>
 </html>

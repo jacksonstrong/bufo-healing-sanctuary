@@ -35,6 +35,8 @@ alter table public.ceremonies enable row level security;
 revoke all on public.facilitators,public.guests,public.ceremonies from anon,authenticated;
 grant select on public.facilitators to authenticated;
 grant select,insert on public.guests,public.ceremonies to authenticated;
+grant update (ceremony_date, intention, preparation_minutes, start_time, end_time, medicines, feelings, integration)
+ on public.ceremonies to authenticated;
 create policy own_profile on public.facilitators for select to authenticated using(id=auth.uid());
 create policy own_guests_read on public.guests for select to authenticated
  using(owner_id=auth.uid() and exists(select 1 from public.facilitators where id=auth.uid() and active));
@@ -43,5 +45,8 @@ create policy own_guests_create on public.guests for insert to authenticated
 create policy own_records_read on public.ceremonies for select to authenticated
  using(owner_id=auth.uid() and exists(select 1 from public.facilitators where id=auth.uid() and active));
 create policy own_records_create on public.ceremonies for insert to authenticated
+ with check(owner_id=auth.uid() and exists(select 1 from public.facilitators where id=auth.uid() and active));
+create policy own_records_update on public.ceremonies for update to authenticated
+ using(owner_id=auth.uid() and exists(select 1 from public.facilitators where id=auth.uid() and active))
  with check(owner_id=auth.uid() and exists(select 1 from public.facilitators where id=auth.uid() and active));
 commit;

@@ -25,7 +25,7 @@ No guest information or credentials are stored in browser localStorage or in the
 - Anonymous callers cannot read or write any table. An unapproved or inactive user cannot read/write guest records. A facilitator cannot change their profile or approval.
 - Test password recovery delivery for each facilitator, invalid credentials, sign-out, token expiration, mobile layout, keyboard navigation, and failed-save retry. Confirm payment buttons open the exact existing sanctuary accounts. Production email delivery for other facilitators is still unverified.
 - Confirm stored guest text displays as text, not executable markup. Confirm no guest data remains visible after sign-out or a browser back/forward cache restore.
-- The initial release is append-only. Entries cannot be edited or deleted through the portal. Keep corrections as a new dated entry; arrange data removal through the sanctuary administrator.
+- Marla reported `Editing enabled.` after running `portal-enable-editing.sql` in the administrator SQL editor. It grants UPDATE only on entry content columns and adds the own-active-account policy. It does not create tables or touch auth.users. The original transactional test is preserved in `portal-editing-privacy-test.sql`; its execution is unverified. The grant does not allow moving an entry to another guest or facilitator. Mock interface tests passed edit prefill, cancel, saving without duplication, failed/denied updates and sign-out clearing. A live browser edit remains unverified. Deletion is not offered.
 - Lists currently cap at 1,000 guests and 1,000 entries per guest. Add pagination before these limits are reached.
 
 ## Membership

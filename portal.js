@@ -2,14 +2,27 @@
  'use strict';
  const $ = id => document.getElementById(id);
  const config = window.PORTAL_CONFIG || {};
- let token = '', guests = [], selected = null, expiry, entryId = null, busy = false, sessionVersion = 0;
+ let token = '', guests = [], selected = null, expiry, entryId = null, editingId = null, extraMedicines = [], busy = false, sessionVersion = 0;
  const status = message => { $('status').textContent = message; };
  const show = (id, yes) => { $(id).hidden = !yes; };
  const value = name => $('entry-form').elements.namedItem(name).value.trim();
  const configured = config.enabled === true && /^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(config.url) && !!config.publishableKey;
+ function resetEntry(){
+  entryId=null;editingId=null;extraMedicines=[];$('entry-form').reset();
+  $('entry-heading').textContent='New ceremony entry';$('save-entry').textContent='Save entry';show('cancel-edit',false);
+ }
+ function editEntry(row){
+  if(busy || (entryId && !confirm('Leave this unsaved entry?')))return;
+  resetEntry();editingId=row.id;entryId=row.id;extraMedicines=row.medicines.slice(3);
+  const values={date:row.ceremony_date,preparation:row.preparation_minutes,start:row.start_time,end:row.end_time,intention:row.intention,feelings:row.feelings,integration:row.integration};
+  for(const [name,content] of Object.entries(values))$('entry-form').elements.namedItem(name).value=content??'';
+  row.medicines.slice(0,3).forEach((m,i)=>{for(const name of ['medicine','amount','time'])$('entry-form').elements.namedItem(`${name}${i}`).value=m[name]??'';});
+  $('entry-heading').textContent='Edit ceremony entry';$('save-entry').textContent='Save changes';show('cancel-edit',true);$('date').focus();
+  status('Editing the saved entry. Choose Save changes when you are ready.');
+ }
  function clearSession() {
   sessionVersion++; token=''; guests=[]; selected=null; entryId=null; clearTimeout(expiry);
-  $('entry-form').reset(); $('guest-form').reset(); $('password').value=''; $('search').value='';
+  resetEntry(); $('guest-form').reset(); $('password').value=''; $('search').value='';
   $('guest-list').replaceChildren(); $('history').replaceChildren(); $('account-name').textContent='';
   $('guest-title').textContent=''; $('guest-form').reset();
   show('workspace',false);show('guest-record',false);show('login',true);
@@ -19,7 +32,7 @@
   const requestVersion=sessionVersion;
   const headers={apikey:config.publishableKey,'Content-Type':'application/json'};
   if(authenticated) headers.Authorization=`Bearer ${token}`;
-  if(method==='POST' && path.startsWith('/rest/')) headers.Prefer='return=representation';
+  if(['POST','PATCH'].includes(method) && path.startsWith('/rest/')) headers.Prefer='return=representation';
   const response=await fetch(config.url+path,{method,headers,body:data===undefined?undefined:JSON.stringify(data),cache:'no-store',credentials:'omit'});
   if(requestVersion!==sessionVersion)throw new Error('Signed out. Please sign in to continue.');
   if(!response.ok){
@@ -45,7 +58,7 @@
    button.type='button';button.className='btn btn-ghost';button.textContent=guest.name;
    button.onclick=()=>action($('workspace'),async()=>{
     if(entryId && !confirm('Leave this unsaved entry?'))return;
-    selected=guest;entryId=null;$('entry-form').reset();
+    selected=guest;resetEntry();
     $('guest-title').textContent=guest.name;show('guest-record',true);
     await history();$('guest-title').focus();status('Guest record opened.');
    });li.append(button);$('guest-list').append(li);
@@ -62,6 +75,7 @@
    const lines=[['Preparation time',row.preparation_minutes==null?'':`${row.preparation_minutes} minutes`],['Ceremony start',row.start_time],['Ceremony end',row.end_time],['Intention / before',row.intention],
     ...row.medicines.map(m=>['Medicine',[m.medicine,m.amount,m.time].filter(Boolean).join(' · ')]),['Guest feelings',row.feelings],['Integration',row.integration]];
    for(const [label,content] of lines){if(content){const p=document.createElement('p');p.textContent=`${label}: ${content}`;article.append(p);}}
+   const edit=document.createElement('button');edit.type='button';edit.className='btn btn-ghost';edit.textContent='Edit entry';edit.onclick=()=>editEntry(row);article.append(edit);
    $('history').append(article);
   }
   $('history-note').textContent=rows.length?'Saved entries, newest first.':'No entries yet for this guest.';
@@ -92,13 +106,18 @@
   await request('/rest/v1/guests','POST',{name});$('guest-form').reset();await loadGuests();status('Guest added. Select their name to open the tracker.');
  });};
  $('entry-form').oninput=()=>{entryId ||= crypto.randomUUID();};
+ $('cancel-edit').onclick=()=>{if(!busy && confirm('Discard changes to this entry?')){resetEntry();status('Changes discarded. The saved entry is unchanged.');}};
  $('entry-form').onsubmit=e=>{e.preventDefault();action($('entry-form'),async()=>{
   if(!selected)throw new Error('Select a guest first.');
-  const medicines=[0,1,2].map(i=>({medicine:value(`medicine${i}`),amount:value(`amount${i}`),time:value(`time${i}`)})).filter(m=>m.medicine||m.amount||m.time);
+  const medicines=[0,1,2].map(i=>({medicine:value(`medicine${i}`),amount:value(`amount${i}`),time:value(`time${i}`)})).filter(m=>m.medicine||m.amount||m.time).concat(extraMedicines);
   if(!medicines.length||medicines.some(m=>!m.medicine))throw new Error('Enter a medicine name for each amount or time recorded.');
   entryId ||= crypto.randomUUID();
-  await request('/rest/v1/ceremonies','POST',{id:entryId,guest_id:selected.id,ceremony_date:value('date'),intention:value('intention'),preparation_minutes:value('preparation')===''?null:Number(value('preparation')),start_time:value('start')||null,end_time:value('end')||null,medicines,feelings:value('feelings'),integration:value('integration')});
-  entryId=null;$('entry-form').reset();status('Entry saved.');await history();
+  const data={ceremony_date:value('date'),intention:value('intention'),preparation_minutes:value('preparation')===''?null:Number(value('preparation')),start_time:value('start')||null,end_time:value('end')||null,medicines,feelings:value('feelings'),integration:value('integration')};
+  if(editingId){
+   const saved=await request(`/rest/v1/ceremonies?id=eq.${encodeURIComponent(editingId)}&guest_id=eq.${encodeURIComponent(selected.id)}`,'PATCH',data);
+   if(!Array.isArray(saved)||saved.length!==1)throw new Error('Changes were not saved. Your access may have changed. Please contact Marla.');
+  }else await request('/rest/v1/ceremonies','POST',{id:entryId,guest_id:selected.id,...data});
+  resetEntry();status('Entry saved.');await history();
  });};
  window.addEventListener('beforeunload',e=>{if(entryId){e.preventDefault();e.returnValue='';}});
  window.addEventListener('pageshow',e=>{if(e.persisted){clearSession();status('Please sign in again.');}});
