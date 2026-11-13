@@ -1,1 +1,101 @@
-{"cleanUrls":true,"trailingSlash":false}
+{
+    "cleanUrls":  true,
+    "trailingSlash":  false,
+    "redirects":  [
+                      {
+                          "source":  "/about-5",
+                          "destination":  "/pathways",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/code-of-conduct",
+                          "destination":  "/about#mission",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/book-online",
+                          "destination":  "/journey#book",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/medical-release-waiver",
+                          "destination":  "/journey#steps",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/donate-today",
+                          "destination":  "/give#donate",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/pricing-plans/list",
+                          "destination":  "/give",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/general-8",
+                          "destination":  "/about#foundation",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/about-1-1",
+                          "destination":  "/learn#workshops",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/about-3-4",
+                          "destination":  "/pathways",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/post/:path*",
+                          "destination":  "/learn#journal",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/blog",
+                          "destination":  "/learn#journal",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/blog/:path*",
+                          "destination":  "/learn#journal",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/profile/angelicrealmsproductions/profile",
+                          "destination":  "/about#facilitators",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/about-3-2",
+                          "destination":  "/training",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/about-3-5",
+                          "destination":  "/learn#videos",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/s-projects-basic",
+                          "destination":  "/learn#articles",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/media",
+                          "destination":  "/learn#interviews",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/about-3-3",
+                          "destination":  "/pathways",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/about-5-1",
+                          "destination":  "/connect#feedback",
+                          "permanent":  true
+                      }
+                  ]
+}
