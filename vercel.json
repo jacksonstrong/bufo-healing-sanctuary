@@ -96,6 +96,16 @@
                           "source":  "/about-5-1",
                           "destination":  "/connect#feedback",
                           "permanent":  true
+                      },
+                      {
+                          "destination":  "/pathways#iboga",
+                          "permanent":  true,
+                          "source":  "/iboga-5-day-retreats"
+                      },
+                      {
+                          "destination":  "/journey#prepare",
+                          "permanent":  true,
+                          "source":  "/general-8-1"
                       }
                   ]
 }
