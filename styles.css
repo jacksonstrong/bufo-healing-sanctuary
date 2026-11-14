@@ -311,6 +311,9 @@ footer .legal{margin-top:60px;padding-top:26px;border-top:1px solid rgba(245,239
 .subnav .wrap{display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
 .subnav a{flex-shrink:0;padding:9px 16px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-size:16px;font-weight:600;color:var(--pine);white-space:nowrap}
 .subnav a:hover{border-color:var(--ember);color:var(--ember)}
+.subnav-wrap .wrap{flex-wrap:wrap;overflow-x:visible}
+.subnav-wrap a{max-width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:760px){.subnav-wrap{position:static}}
 
 .bg-sand{background:var(--sand)}
 .bg-bone{background:var(--bone)}
