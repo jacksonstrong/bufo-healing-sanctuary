@@ -60,6 +60,12 @@
 </section>
 <section id="workspace" hidden aria-label="Your private guest records">
  <div class="account"><div><div class="eyebrow">Your facilitator&nbsp;account</div><h2 id="account-name"></h2></div><button id="logout" class="btn btn-ghost" type="button">Sign out</button></div>
+ <div class="panel" id="manual-library" aria-labelledby="manual-title">
+  <h3 id="manual-title">Your training&nbsp;manual</h3>
+  <p>The original digital training manual will be available here for you to&nbsp;download.</p>
+  <button class="btn btn-ember" type="button" disabled aria-describedby="manual-note">Download training&nbsp;manual</button>
+  <p id="manual-note" role="status">The download is being prepared. Please check back&nbsp;soon.</p>
+ </div>
  <div class="panel"><h3>Your&nbsp;guests</h3>
  <label for="search">Find a guest by name</label><input type="search" id="search" autocomplete="off">
  <p id="guest-count" role="status"></p><ul id="guest-list" class="guest-list"></ul>
