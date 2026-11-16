@@ -420,3 +420,6 @@ h1,h2,h3,h4,summary,blockquote,b,strong,.kind,.eyebrow,cite,.tile h3,.card h3{te
 /* Display the front half of the supplied workbook cover wrap. */
 .workbook-cover{position:relative;width:min(280px,100%);aspect-ratio:928/1332;overflow:hidden;border-radius:10px}
 .book .workbook-cover img,.shop .tile .workbook-cover img{position:absolute;top:0;right:0;width:203.45%;max-width:none;height:100%;object-fit:fill;transform:none;border-radius:0;box-shadow:none}
+
+/* Preserve Marla's full portrait without an arch crop. */
+.portrait img.marla-full-portrait,.lead-guide img.marla-full-portrait,.split .media.arch img.marla-full-portrait{height:auto;aspect-ratio:auto;object-fit:contain;border-radius:var(--r)}
