@@ -39,9 +39,12 @@
   const session = await request('/auth/v1/token?grant_type=password', {email, password}, '');
   if (current !== generation) return;
   try {
-   const profiles = await request('/rest/v1/guest_members?select=active', undefined, session.access_token);
+   const [profiles, facilitators] = await Promise.all([
+    request('/rest/v1/guest_members?select=active', undefined, session.access_token),
+    request('/rest/v1/facilitators?select=active', undefined, session.access_token)
+   ]);
    if (current !== generation) return;
-   if (profiles.length !== 1 || !profiles[0].active) throw new Error('Your guest access is not active. Please contact Marla.');
+   if (!(profiles.length === 1 && profiles[0].active) && !(facilitators.length === 1 && facilitators[0].active)) throw new Error('Your guest access is not active. Please contact Marla.');
   } catch (error) {
    await request('/auth/v1/logout', {}, session.access_token).catch(() => {});
    throw error;

@@ -18,3 +18,7 @@
 .portal .account{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
 .portal .note{margin-top:18px}
 @media(max-width:640px){.portal .fields,.portal .medicine,.portal .guest-list{grid-template-columns:1fr}.portal .btn{max-width:100%;overflow-wrap:anywhere}}
+
+.portal select{width:100%;max-width:100%;padding:12px;border:1px solid var(--pine);border-radius:10px;background:var(--bone);color:var(--ink);font:inherit}
+.portal fieldset{min-width:0;border:0;padding:0}
+.portal #access-list .panel{overflow-wrap:anywhere}
