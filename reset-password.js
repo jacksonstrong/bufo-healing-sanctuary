@@ -15,7 +15,7 @@
   try {
    const response=await fetch(config.url+'/auth/v1/user',{headers:{apikey:config.publishableKey,Authorization:'Bearer '+token},cache:'no-store',credentials:'omit'});
    if(!response.ok)throw new Error();
-   fieldset.disabled=false;status.textContent='Choose a new password for your facilitator account.';
+   fieldset.disabled=false;status.textContent='Choose a new password for your sanctuary account.';
   }catch{token=null;status.textContent='This recovery link could not be verified. Please request a new email.';}
  }
  form.onsubmit=async e=>{
