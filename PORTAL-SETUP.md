@@ -1,3 +1,15 @@
+## November 24 update: passwordless, code-based sign-in
+
+Guests and facilitators no longer use passwords. They enter their email, get a one-time sign-in code emailed to them, and enter that code to get in. `create-account.html`/`.js` and the password sign-up flow were removed. `reset-password.html`/`.js` stay in place only for Marla's own `/access-admin` password.
+
+Flow: Marla approves someone in `/access-admin` → an email with a one-time code goes out automatically (`POST /auth/v1/otp` with `create_user:true`) → they enter email + code at `/guest-portal` or `/portal` (`POST /auth/v1/verify`) → the existing `sync_sanctuary_access` trigger applies their approval the moment their email is confirmed, exactly as it did before. Returning sign-ins use the same code request, but with `create_user:false`, so a stranger typing a random email cannot create a new account from the public sign-in form; only Marla's approval action can do that. "Resend code" in `/access-admin` re-sends a fresh code to an already-approved person.
+
+Required Supabase dashboard setup (not done yet, needed before this is reliable for real use):
+1. Project Settings → Auth → SMTP Settings: turn on custom SMTP using Resend. Host `smtp.resend.com`, port `465`, username `resend`, password = a Resend API key, sender `portal@bufohealingsanctuary.com`. Without this, Supabase's own default mail sender is used, which has very tight rate limits (a few emails per hour) and won't look like it's from the sanctuary.
+2. Authentication → Email Templates → Magic Link: edit the wording to match the site's voice and make sure it includes `{{ .Token }}` (the 6-digit code), since that's what guests and facilitators type in.
+
+No DNS changes are needed for this — the Resend sending-domain records added to GoDaddy already cover it.
+
 # Facilitator Portal connection
 
 The portal is implemented at `/portal`. Its URL and public key are configured and sign-in is enabled for approved accounts.

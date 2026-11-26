@@ -32,7 +32,16 @@
    const detail=document.createElement('p');detail.textContent=`${row.email}: ${row.access==='declined'?'Declined / revoked':row.access==='facilitator'?'Facilitator (both portals)':'Guest'}`;
    const edit=document.createElement('button');edit.className='btn btn-ghost';edit.textContent='Change access';
    edit.onclick=()=>{$('person-name').value=row.name;$('person-email').value=row.email;$('person-access').value=row.access;$('person-name').focus();};
-   card.append(title,detail,edit);$('access-list').append(card);
+   card.append(title,detail,edit);
+   if(row.access!=='declined'){
+    const resend=document.createElement('button');resend.className='btn btn-ghost';resend.textContent='Resend code';
+    resend.onclick=()=>action(async()=>{
+     await request('/auth/v1/otp',{email:row.email,create_user:true},'');
+     status(`A sign-in code has been resent to ${row.email}.`);
+    });
+    card.append(resend);
+   }
+   $('access-list').append(card);
   }
   if(!rows.length)$('access-list').textContent='No saved decisions yet.';
  }
@@ -55,7 +64,12 @@
   const label=chosen_access==='facilitator'?'Facilitator access to both portals':chosen_access==='guest'?'Guest access only':'Decline or revoke access to both portals';
   if(!confirm(`${label} for ${person_name} (${person_email})?`))return;
   const result=await request('/rest/v1/rpc/manage_sanctuary_access',{person_email,person_name,chosen_access});
-  $('decision-result').textContent=result;status('Access decision saved.');await load();
+  let message=result;
+  if(chosen_access!=='declined'){
+   try{await request('/auth/v1/otp',{email:person_email,create_user:true},'');message+=' A sign-in code has been emailed to them.';}
+   catch{message+=' The sign-in code could not be sent automatically. Use Resend code below.';}
+  }
+  $('decision-result').textContent=message;status('Access decision saved.');await load();
  });};
  $('admin-refresh').onclick=()=>action(load);
  $('admin-logout').onclick=()=>{const access=token;clear();status('Signed out.');if(access)request('/auth/v1/logout',{},access).catch(()=>{});};

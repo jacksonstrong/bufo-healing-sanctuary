@@ -2,7 +2,7 @@
  'use strict';
  const $ = id => document.getElementById(id);
  const config = window.PORTAL_CONFIG || {};
- let token = '', guests = [], selected = null, expiry, entryId = null, editingId = null, extraMedicines = [], busy = false, sessionVersion = 0;
+ let token = '', guests = [], selected = null, expiry, entryId = null, editingId = null, extraMedicines = [], busy = false, sessionVersion = 0, pendingEmail = '';
  const status = message => { $('status').textContent = message; };
  const show = (id, yes) => { $(id).hidden = !yes; };
  const value = name => $('entry-form').elements.namedItem(name).value.trim();
@@ -21,10 +21,11 @@
   status('Editing the saved entry. Choose Save changes when you are ready.');
  }
  function clearSession() {
-  sessionVersion++; token=''; guests=[]; selected=null; entryId=null; clearTimeout(expiry);
-  resetEntry(); $('guest-form').reset(); $('password').value=''; $('search').value='';
+  sessionVersion++; token=''; guests=[]; selected=null; entryId=null; pendingEmail=''; clearTimeout(expiry);
+  resetEntry(); $('guest-form').reset(); $('code').value=''; $('search').value='';
   $('guest-list').replaceChildren(); $('history').replaceChildren(); $('account-name').textContent='';
   $('guest-title').textContent=''; $('guest-form').reset();
+  show('email-form',true);show('code-form',false);
   show('workspace',false);show('guest-record',false);show('login',true);
  }
  async function request(path, method='GET', data, authenticated=true) {
@@ -80,14 +81,21 @@
   }
   $('history-note').textContent=rows.length?'Saved entries, newest first.':'No entries yet for this guest.';
  }
- $('recover').onclick=()=>action($('sign-in'),async()=>{
-  if(!$('email').value.trim() || !$('email').checkValidity())throw new Error('Enter your account email first.');
-  await request('/auth/v1/recover?redirect_to='+encodeURIComponent(location.origin+'/reset-password'),'POST',{email:$('email').value.trim()},false);
-  status('If this email has an account, a recovery email will be sent. Check your inbox and spam folder.');
+ $('email-form').onsubmit=e=>{e.preventDefault();action($('email-form'),async()=>{
+  const email=$('email').value.trim();if(!email)throw new Error('Enter your email first.');
+  await request('/auth/v1/otp','POST',{email,create_user:false},false);
+  pendingEmail=email;show('email-form',false);show('code-form',true);
+  status('If this email is approved, a sign-in code is on its way. Check your inbox and spam folder.');
+  $('code').focus();
+ });};
+ $('resend').onclick=()=>action($('code-form'),async()=>{
+  if(!pendingEmail)throw new Error('Enter your email first.');
+  await request('/auth/v1/otp','POST',{email:pendingEmail,create_user:false},false);
+  status('A new code is on its way. Check your inbox and spam folder.');
  });
- $('sign-in').onsubmit=e=>{e.preventDefault();action($('sign-in'),async()=>{
+ $('code-form').onsubmit=e=>{e.preventDefault();action($('code-form'),async()=>{
   let session;
-  try{session=await request('/auth/v1/token?grant_type=password','POST',{email:$('email').value.trim(),password:$('password').value},false);}finally{$('password').value='';}
+  try{session=await request('/auth/v1/verify','POST',{email:pendingEmail,token:$('code').value.trim(),type:'email'},false);}finally{$('code').value='';}
   token=session.access_token;
   try{
    const profiles=await request('/rest/v1/facilitators?select=name,active');
@@ -121,5 +129,5 @@
  });};
  window.addEventListener('beforeunload',e=>{if(entryId){e.preventDefault();e.returnValue='';}});
  window.addEventListener('pageshow',e=>{if(e.persisted){clearSession();status('Please sign in again.');}});
- if(!configured){$('sign-in').querySelector('fieldset').disabled=true;status('Facilitator sign-in is being prepared. Please check back soon.');}
+ if(!configured){$('email-form').querySelector('fieldset').disabled=true;status('Facilitator sign-in is being prepared. Please check back soon.');}
 })();

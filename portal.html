@@ -50,11 +50,12 @@
 </div></header>
 <div class="portal"><div class="wrap">
 <p id="status" role="status" aria-live="polite"></p>
-<section id="login" aria-labelledby="login-title"><p><a href="https://form.jotform.com/263252959796072" target="_blank" rel="noopener noreferrer">Request portal access</a> · <a href="/create-account">Create your login</a></p>
+<section id="login" aria-labelledby="login-title"><p><a href="https://form.jotform.com/263252959796072" target="_blank" rel="noopener noreferrer">Request portal access</a></p>
  <h2 id="login-title">Welcome&nbsp;back</h2>
- <p>Sign in with your approved facilitator email and&nbsp;password.</p>
+ <p>Enter your approved facilitator email. We will send you a sign-in&nbsp;code.</p>
  <div class="panel">
- <form id="sign-in"><fieldset style="border:0"><label for="email">Your email</label><input id="email" type="email" autocomplete="username" required maxlength="254"><label for="password">Your password</label><input id="password" type="password" autocomplete="current-password" required><div class="actions"><button class="btn btn-ember" type="submit">Sign in</button><button id="recover" class="btn btn-ghost" type="button">Forgot password</button></div></fieldset></form>
+ <form id="email-form"><fieldset style="border:0"><label for="email">Your email</label><input id="email" type="email" autocomplete="username" required maxlength="254"><div class="actions"><button class="btn btn-ember" type="submit">Send sign-in&nbsp;code</button></div></fieldset></form>
+ <form id="code-form" hidden><fieldset style="border:0"><label for="code">Code from your email</label><input id="code" inputmode="numeric" autocomplete="one-time-code" required pattern="[0-9]{6,10}" maxlength="10"><div class="actions"><button class="btn btn-ember" type="submit">Sign in</button><button id="resend" class="btn btn-ghost" type="button">Send a new&nbsp;code</button></div></fieldset></form>
  <p class="note">Need access? <a href="mailto:bufohealingsanctuary@gmail.com">Contact&nbsp;Marla.</a></p>
  </div>
 </section>

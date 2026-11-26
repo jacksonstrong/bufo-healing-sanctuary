@@ -1,12 +1,13 @@
 (() => {
  'use strict';
  const $ = id => document.getElementById(id), config = window.PORTAL_CONFIG;
- let token = '', timer, generation = 0, signingIn = false;
+ let token = '', timer, generation = 0, busy = false, pendingEmail = '';
  const status = text => { $('guest-status').textContent = text; };
  function clear() {
-  token = ''; generation++; clearTimeout(timer);
+  token = ''; generation++; clearTimeout(timer); pendingEmail = '';
   $('guest-content').hidden = true; $('guest-login').hidden = false;
-  $('guest-password').value = '';
+  $('guest-email-form').hidden = false; $('guest-code-form').hidden = true;
+  $('guest-code').value = '';
  }
  async function request(path, data, access = token) {
   const response = await fetch(config.url + path, {
@@ -18,25 +19,39 @@
   return response.status === 204 ? null : response.json();
  }
  async function run(button, task) {
-  button.disabled = true;
+  if (busy) return;
+  busy = true; button.disabled = true;
   try { await task(); } catch (error) { status(error.message); }
-  finally { button.disabled = false; }
+  finally { busy = false; button.disabled = false; }
  }
- $('guest-signin').onsubmit = event => {
+ $('guest-email-form').onsubmit = event => {
   event.preventDefault();
-  run(event.submitter || $('guest-signin').querySelector('[type=submit]'), async () => {
+  run(event.submitter || $('guest-email-form').querySelector('[type=submit]'), async () => {
    if (!config?.guestEnabled) throw new Error('Guest sign-in is being prepared. Please contact Marla for access.');
-   if (signingIn) return;
-   signingIn = true;
-   const email = $('guest-email').value.trim(), password = $('guest-password').value;
-   $('guest-password').value = '';
-   try { await signIn(email, password); } finally { signingIn = false; }
+   const email = $('guest-email').value.trim();
+   if (!email) throw new Error('Enter your email first.');
+   await request('/auth/v1/otp', {email, create_user: false}, '');
+   pendingEmail = email;
+   $('guest-email-form').hidden = true; $('guest-code-form').hidden = false;
+   status('If this email is approved, a sign-in code is on its way. Check your inbox and spam folder.');
+   $('guest-code').focus();
+  });
+ };
+ $('guest-resend').onclick = () => run($('guest-resend'), async () => {
+  if (!pendingEmail) throw new Error('Enter your email first.');
+  await request('/auth/v1/otp', {email: pendingEmail, create_user: false}, '');
+  status('A new code is on its way. Check your inbox and spam folder.');
+ });
+ $('guest-code-form').onsubmit = event => {
+  event.preventDefault();
+  run(event.submitter || $('guest-code-form').querySelector('[type=submit]'), async () => {
+   await signIn(pendingEmail, $('guest-code').value.trim());
   });
  };
  // Approval is enforced by database and storage policies, not by this display check.
- async function signIn(email, password) {
-  clear(); const current = generation;
-  const session = await request('/auth/v1/token?grant_type=password', {email, password}, '');
+ async function signIn(email, code) {
+  const current = generation;
+  const session = await request('/auth/v1/verify', {email, token: code, type: 'email'}, '');
   if (current !== generation) return;
   try {
    const [profiles, facilitators] = await Promise.all([
@@ -51,15 +66,10 @@
   }
   token = session.access_token;
   $('guest-login').hidden = true; $('guest-content').hidden = false;
+  $('guest-code').value = '';
   timer = setTimeout(() => { clear(); status('Please sign in again.'); }, Math.max(0, session.expires_in - 30) * 1000);
   status('Welcome. Your resources are ready.');
  }
- $('guest-recover').onclick = () => run($('guest-recover'), async () => {
-  if (!config?.guestEnabled) throw new Error('Guest sign-in is being prepared. Please contact Marla for access.');
-  if (!$('guest-email').value || !$('guest-email').checkValidity()) throw new Error('Enter your email first.');
-  await request('/auth/v1/recover?redirect_to=' + encodeURIComponent(location.origin + '/reset-password'), {email: $('guest-email').value.trim()}, '');
-  status('If this email has an account, a recovery email will be sent.');
- });
  $('guest-logout').onclick = () => {
   const access = token; clear(); status('Signed out.');
   if (access) request('/auth/v1/logout', {}, access).catch(() => {});
