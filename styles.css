@@ -423,3 +423,20 @@ h1,h2,h3,h4,summary,blockquote,b,strong,.kind,.eyebrow,cite,.tile h3,.card h3{te
 
 /* Preserve Marla's full portrait without an arch crop. */
 .portrait img.marla-full-portrait,.lead-guide img.marla-full-portrait,.split .media.arch img.marla-full-portrait{height:auto;aspect-ratio:auto;object-fit:contain;border-radius:var(--r)}
+
+.vg{margin-top:72px}
+.vg-head{margin-bottom:28px}
+.vg-head h3{margin:6px 0 0}
+.vg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.vg-card{background:#F5EFE4;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(29,27,23,.10)}
+.vg-frame{position:relative;aspect-ratio:16/9;background:#1D1B17}
+.vg-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vg-meta{padding:20px 24px 24px}
+.vg-kind{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#B4532A;margin-bottom:6px}
+.vg-meta h4{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;letter-spacing:-.01em;color:#1D1B17;margin:0}
+.vg-more{margin-top:32px}
+@media (max-width:760px){
+  .vg{margin-top:56px}
+  .vg-grid{grid-template-columns:1fr;gap:22px}
+  .vg-meta h4{font-size:20px}
+}
